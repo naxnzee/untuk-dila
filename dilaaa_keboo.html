@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Loop Animation - dilaaa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Tulisan tengah -->
+  <div class="text">dilaaa ❤️</div>
+
+  <!-- Tombol Play Musik -->
+  <button class="play-btn" onclick="playMusic()">▶ Play Music</button>
+
+  <!-- Audio -->
+  <audio id="bg-music" loop>
+    <source src="Sempurna.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Love Loop Script -->
+  <script>
+    const colors = ['#ff4d4d', '#ff66a3', '#ff1a75', '#e6005c', '#ff6699'];
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      heart.style.background = colors[Math.floor(Math.random() * colors.length)];
+      heart.style.zIndex = 999;
+      heart.style.opacity = Math.random();
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 200);
+
+    // Fungsi play musik
+    function playMusic() {
+      const music = document.getElementById('bg-music');
+      music.play();
+    }
+  </script>
+
+</body>
+</html>
